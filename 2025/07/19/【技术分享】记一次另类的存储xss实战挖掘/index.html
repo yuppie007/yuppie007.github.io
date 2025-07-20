@@ -20,30 +20,49 @@
     var CONFIG = {"hostname":"yuppie007.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="问题创造现实">
-<meta property="og:type" content="website">
-<meta property="og:title" content="屿湃集">
-<meta property="og:url" content="https://yuppie007.github.io/index.html">
+  <meta name="description" content="&#x2F;* 自定义引用块左侧边框颜色 *&#x2F; blockquote {   border-left: 4px solid #e66d6dff; &#x2F;* 红色边框 *&#x2F;   padding-left: 15px; }     展示如何通过另辟蹊径的思路，成功发现并利用一处不同寻常的XSS漏洞。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【技术分享】记一次另类的存储xss实战挖掘">
+<meta property="og:url" content="https://yuppie007.github.io/2025/07/19/%E3%80%90%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%E3%80%91%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8F%A6%E7%B1%BB%E7%9A%84%E5%AD%98%E5%82%A8xss%E5%AE%9E%E6%88%98%E6%8C%96%E6%8E%98/index.html">
 <meta property="og:site_name" content="屿湃集">
-<meta property="og:description" content="问题创造现实">
+<meta property="og:description" content="&#x2F;* 自定义引用块左侧边框颜色 *&#x2F; blockquote {   border-left: 4px solid #e66d6dff; &#x2F;* 红色边框 *&#x2F;   padding-left: 15px; }     展示如何通过另辟蹊径的思路，成功发现并利用一处不同寻常的XSS漏洞。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/6Hyz/1080X479/640.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/xX9Q/1740X1217/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_221436_271.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/2HVZ/2560X1347/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_221819_527.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/ZdRw/1074X549/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_221828_039.jpg">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/5Mwt/1777X908/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222047_864.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/Ddee/1791X903/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222055_680.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/zTa4/2560X1347/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222102_737.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/ZmAG/1718X818/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222108_129.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/khkV/2156X1073/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222112_777.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/oSZh/2431X881/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222126_712.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/UQ2f/1807X927/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222121_738.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/oSZh/2431X881/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222126_712.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/KtaE/2406X1377/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222131_417.png">
+<meta property="og:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/l9Yl/2560X1347/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222135_657.png">
+<meta property="article:published_time" content="2025-07-19T13:49:32.000Z">
+<meta property="article:modified_time" content="2025-07-20T15:03:35.343Z">
 <meta property="article:author" content="Yuppie">
+<meta property="article:tag" content="技术分享">
+<meta property="article:tag" content="WEB渗透">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/6Hyz/1080X479/640.png">
 
-<link rel="canonical" href="https://yuppie007.github.io/">
+<link rel="canonical" href="https://yuppie007.github.io/2025/07/19/%E3%80%90%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%E3%80%91%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8F%A6%E7%B1%BB%E7%9A%84%E5%AD%98%E5%82%A8xss%E5%AE%9E%E6%88%98%E6%8C%96%E6%8E%98/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>屿湃集</title>
+  <title>【技术分享】记一次另类的存储xss实战挖掘 | 屿湃集</title>
   
 
 
@@ -185,9 +204,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -203,10 +223,9 @@
       <meta itemprop="name" content="屿湃集">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/07/19/%E3%80%90%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%E3%80%91%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8F%A6%E7%B1%BB%E7%9A%84%E5%AD%98%E5%82%A8xss%E5%AE%9E%E6%88%98%E6%8C%96%E6%8E%98/" class="post-title-link" itemprop="url">【技术分享】记一次另类的存储xss实战挖掘</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          【技术分享】记一次另类的存储xss实战挖掘
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -234,7 +253,14 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -259,7 +285,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <style>
+        <style>
 /* 自定义引用块左侧边框颜色 */
 blockquote {
   border-left: 4px solid #e66d6dff; /* 红色边框 */
@@ -271,29 +297,88 @@ blockquote {
 <blockquote>
 <p><strong>展示如何通过另辟蹊径的思路，成功发现并利用一处不同寻常的XSS漏洞。</strong></p>
 </blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/07/19/%E3%80%90%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%E3%80%91%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8F%A6%E7%B1%BB%E7%9A%84%E5%AD%98%E5%82%A8xss%E5%AE%9E%E6%88%98%E6%8C%96%E6%8E%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+<span id="more"></span>
+<p>0x01 前言   <br>&emsp;&emsp;在Web安全领域，XSS漏洞挖掘一直是安全研究人员关注的焦点。传统的XSS挖掘常常演变为与WAF的”猫鼠游戏”—— 要么凭借扎实的技术功底，不断突破各种过滤和防御机制；要么通过创新思维，发现那些被大多数人忽视的隐蔽注入点。本文将分享一次后者的实战案例，展示如何通过另辟蹊径的思路，成功发现并利用一处不同寻常的XSS漏洞。</p>
+<p>0x02 演示</p>
+<p>​	某学校系统的登录页面：</p>
+<img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/6Hyz/1080X479/640.png" title="登陆">
+
+<p>好消息，可以进行账号注册，立马注册一个账号登录进行测试：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/xX9Q/1740X1217/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_221436_271.png" alt="1740X1217/微信图片_2025-07-20_221436_271.png"></p>
+<p>注册后，登录成功：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/2HVZ/2560X1347/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_221819_527.png" alt="2560X1347/微信图片_2025-07-20_221819_527.png"></p>
+<p>在个人中心处，有文件上传点，立马开整：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/ZdRw/1074X549/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_221828_039.jpg" alt="1074X549/微信图片_2025-07-20_221828_039.jpg"></p>
+<p>正常上传，测试接口是否正常：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/5Mwt/1777X908/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222047_864.png" alt="1777X908/微信图片_2025-07-20_222047_864.png"></p>
+<p>尝试更改后缀名，MIME和文件内容不变，发现此处为后缀名白名单校验，仅允许上传JPG和PNG格式：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/Ddee/1791X903/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222055_680.png" alt="1791X903/微信图片_2025-07-20_222055_680.png"></p>
+<p>尝试进行绕过，未成功（因此处重点讲解xss，故不详细展开）</p>
+<p>正当我一筹莫展时，看了看首页，查看刚刚正常返回的图片，发现刚刚上传的图片名称被重命名，基于必须展示图片这一必须条件，故后缀名一定固定：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/zTa4/2560X1347/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222102_737.png" alt="2560X1347/微信图片_2025-07-20_222102_737.png"></p>
+<p>猜想可以通过此处构造闭合进行存储xss。回到yakit，再进行测试，发现输入”文件名.1png”无法进行上传：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/ZmAG/1718X818/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222108_129.png" alt="1718X818/微信图片_2025-07-20_222108_129.png"></p>
+<p><font color="red">大胆猜想后端逻辑：</font></p>
+<p>刚刚输入的文件名为“微信图片_20250112115118.png”</p>
+<p>1.服务端提取全部字符串并定位第一个（.）的位置，将其前面的字符字符串视为文件名并重命名；</p>
+<p>2.提取最后一个（.）位置，将其后的字符串识别为”文件格式”并进行白名单校验；</p>
+<p>3.每次提取后都是对原字符串进行替换，而不是“拼接”。</p>
+<p>如果此时再加入第三个点，那么中间的字符串将会可控，从而导致标签“逃逸”的发生。<br>来尝试验证一下刚刚的猜想，更改数据包中的文件名称为”微信图片_20250112115118.png”，上传成功：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/khkV/2156X1073/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222112_777.png" alt="2156X1073/微信图片_2025-07-20_222112_777.png"></p>
+<p>返回前端查看，我们的猜想验证成功：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/oSZh/2431X881/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222126_712.png" alt="2431X881/微信图片_2025-07-20_222126_712.png"></p>
+<p>接下来就简单了，产生闭合，构造新的onerror属性进行利用。</p>
+<p>尝试了一会，payload为：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;1.html&quot;onError=this.src=&quot;http://xxxx/xx/xx/xxxxx/xxx/images/xxxx.png&quot;</span><br><span class="line">(为保证测试无危害系统，此处png为系统内的图片，做了脱敏处理)</span><br></pre></td></tr></table></figure>
+
+<p>成功上传：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/UQ2f/1807X927/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222121_738.png" alt="1807X927/微信图片_2025-07-20_222121_738.png"></p>
+<p>前端查看源代码，发现成功插入：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/oSZh/2431X881/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222126_712.png" alt="2431X881/微信图片_2025-07-20_222126_712.png"></p>
+<p>基于浏览器特性，如果出现两个Onerror，将会优先执行第一个(这里以自己的服务器靶场环境演示):</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/KtaE/2406X1377/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222131_417.png" alt="2406X1377/微信图片_2025-07-20_222131_417.png"></p>
+<p>查看页面，发现成功执行，DOM树也成功将第一个Onerror构建，个人头像处图片也成功加载：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250720/l9Yl/2560X1347/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-07-20_222135_657.png" alt="2560X1347/微信图片_2025-07-20_222135_657.png"></p>
+<hr>
+<p><strong>0x03 写在最后</strong></p>
+<p>  总的来说，整体思路并不复杂，但仍然有几个关键点，如：浏览器的解析特性、变量是否可控等。希望大家以后不要急于求成，而是深入漏洞原理，了解机制特性，这样才能更进一步！</p>
+
     </div>
 
     
     
     
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Yuppie 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" rel="tag"># 技术分享</a>
+              <a href="/tags/WEB%E6%B8%97%E9%80%8F/" rel="tag"># WEB渗透</a>
+          </div>
+
+        
+
+
+        
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
