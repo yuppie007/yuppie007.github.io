@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>DMZ区</title>
+    <url>/2025/07/19/DMZ%E5%8C%BA/</url>
+    <content><![CDATA[<style>
+/* 自定义引用块左侧边框颜色 */
+blockquote {
+  border-left: 4px solid #e66d6dff; /* 红色边框 */
+  padding-left: 15px;
+}
+</style>
+
+<blockquote>
+<p><strong>DMZ（Demilitarized Zone，非军事区）在网络安全领域中，指的是一个与企业内网和互联网都保持隔离的中间缓冲区域。</strong></p>
+</blockquote>
+<span id="more"></span>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>​	DMZ（Demilitarized Zone，非军事区）在网络安全领域中，指的是一个与企业内网和互联网都保持隔离的中间缓冲区域。它主要用于部署需要对外开放的服务（如Web服务器、邮件网关、DNS等），以在保障访问便利性的同时有效防止攻击者通过这些公开服务渗透企业内网。</p>
+<p>​	在攻击者成功入侵DMZ服务器的情况下，由于DMZ与内网之间存在防火墙策略隔离，他们仍难以直接访问内部业务系统，从而起到“隔离缓冲、防御纵深”的作用。</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>​	典型的部署模式是将DMZ区和企业内网之间使用防火墙隔离，并在互联网和DMZ间部署防火墙，形成“三明治结构”：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250801/SK5A/572X422/v2-d1af88a5da1d50b4c420082ea2166ed0_r.png" alt="572X422/v2-d1af88a5da1d50b4c420082ea2166ed0_r.png"></p>
+<p>​	此时将网络划分为了三个区域，分别是互联网、DMZ区和内网区域，互联网通过防火墙访问相关服务器后，如果想要进入强隔离内网，需突破边界设备。</p>
+<p>​	在企业资金预算不足时，也常常采用一台防火墙部署，此时通对防火墙做策略控制，实现逻辑上的网络隔离：</p>
+<p><img src="https://tc.z.wiki/autoupload/f/wsT1loYe6f3qK6o10P8VM9iO_OyvX7mIgxFBfDMDErs/20250801/H6G2/1962X1434/image.png" alt="1962X1434/image.png"></p>
+<p>​	</p>
+<p>​	</p>
+]]></content>
+      <categories>
+        <category>网络架构</category>
+      </categories>
+      <tags>
+        <tag>技术分享</tag>
+        <tag>企业架构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【技术分享】记一次另类的存储xss实战挖掘</title>
     <url>/2025/07/19/%E3%80%90%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%E3%80%91%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8F%A6%E7%B1%BB%E7%9A%84%E5%AD%98%E5%82%A8xss%E5%AE%9E%E6%88%98%E6%8C%96%E6%8E%98/</url>
     <content><![CDATA[<style>
